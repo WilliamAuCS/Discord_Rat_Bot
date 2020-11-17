@@ -5,6 +5,7 @@ const fs = require('fs');
 const login_key = fs.readFileSync('./credentials/client_login.key', { encoding: 'utf-8' });
 const manage_data = require('./manage_data');
 const data = manage_data.get_data();
+const cm = require('./tools/chat_manager');
 
 // Bot name
 const bot_name = 'Rat Bot';
@@ -26,6 +27,7 @@ client.once('ready', () => {
 });
 
 client.on('message', (message) => {
+    cm.checkMessage(message);
     // If user exists in file incriment message_count
     if (!!data.user_data[message.author.id]) {
         data.user_data[message.author.id].message_count += 1;
