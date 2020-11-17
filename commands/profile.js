@@ -35,7 +35,6 @@ module.exports = {
         if (message.member.roles.cache.some((r) => {
             for (var key in privileged_roles) {
                 if (r.id === privileged_roles[key]) {
-                    console.log("priviledged")
                     privileged = true;
                     break;
                 }
